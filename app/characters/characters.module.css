@@ -1,0 +1,51 @@
+.characters_container {
+  gap: 3rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 5rem;
+}
+
+.rick_characters {
+  font-size: 4rem;
+  text-align: center;
+}
+
+.characters_list {
+  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.character_item {
+  height: 250px;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 8px;
+  overflow: hidden;
+  transform-origin: center left;
+  transition: transform 0.5s;
+}
+
+/* .characters_container:hover .character_item:hover {
+  transform: scale(1.25);
+}
+
+.character_item:hover~.character_item {
+  transform: translate3d(50px, 0, 0);
+} */
+
+.character_info {
+  inset: 0;
+  font-size: 1.5rem;
+  padding: 1rem 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 1));
+}

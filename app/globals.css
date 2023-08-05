@@ -91,7 +91,8 @@ a {
   letter-spacing: 0.25rem;
 }
 
-p {
+p,
+h1 {
   letter-spacing: 0.25rem;
 }
 
@@ -106,6 +107,10 @@ p {
   background: linear-gradient(to right, #254659, #191D26),
     linear-gradient(to top, #000, #000);
   ;
+}
+
+.text-center {
+  text-align: center;
 }
 
 @media (prefers-color-scheme: dark) {

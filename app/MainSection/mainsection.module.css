@@ -20,6 +20,7 @@
 
 .rick_image {
   display: flex;
+  padding: 0 7rem;
   align-items: center;
   justify-content: flex-end;
 }
