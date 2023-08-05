@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from "react"
 import styles from './characters.module.css'
+import Paginator from './paginator/page'
 
 interface RMC {
   name: string;
@@ -10,16 +11,17 @@ interface RMC {
 
 const Characters = () => {
 
+  const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
   const [characters, setCharacters] = useState([])
   const [charactersCopy, setCharactersCopy] = useState([])
 
-  const getCharacters = async () => {
+  const getCharacters = async (page?: number) => {
     try {
-      const response = await fetch('https://rickandmortyapi.com/api/character/?page=1')
-      const data = await response.json()
-      console.log(data)
-      const { results } = data
+      page = page ?? currentPage
+      const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${page}`)
+      const { results, info } = await response.json()
+      setTotalPages(info.pages)
       setCharactersCopy(results)
       setCharacters(results)
     } catch {
@@ -45,33 +47,42 @@ const Characters = () => {
     }
   }
 
+  const getNewPage = (page: number) => {
+    setCurrentPage(page)
+  }
+
   useEffect(() => {
-    getCharacters()
-  }, [])
+    if (currentPage !== 1) {
+      getCharacters(currentPage)
+    } else {
+      getCharacters()
+    }
+  }, [currentPage])
+
 
   return (
     <section className={styles.characters_container}>
-      <div className={styles.characters_details}>
-        <h1 className={styles.rick_characters}>Characters</h1>
-        <div className={styles.search_container}>
-          <input onChange={(event) => handlerCharacter(event)} className={styles.search_input} type="text" placeholder="Search by name or species" />
-        </div>
-        {characters.length > 0 && <div className={styles.characters_list}>
-          {characters.map((character: RMC, idx) => {
-            return (
-              <div className={styles.character_item} key={idx} style={{ backgroundImage: `url(${character?.image})` }}>
-                <div className={styles.character_info}>
-                  <p>{character.name}</p>
-                  <p>{character.species}</p>
+      <div className={styles.characters_container_overflow}>
+        <div className={styles.characters_details}>
+          <h1 className={styles.rick_characters}>Characters</h1>
+          <div className={styles.search_container}>
+            <input onChange={(event) => handlerCharacter(event)} className={styles.search_input} type="text" placeholder="Search by name or species" />
+          </div>
+          {characters.length > 0 && <div className={styles.characters_list}>
+            {characters.map((character: RMC, idx) => {
+              return (
+                <div className={styles.character_item} key={idx} style={{ backgroundImage: `url(${character?.image})` }}>
+                  <div className={styles.character_info}>
+                    <p>{character.name}</p>
+                    <p>{character.species}</p>
+                  </div>
                 </div>
-              </div>
-            )
-          })}
-        </div>}
-      </div>
-      <div className={styles.characters_paginator}>
-        <div className={styles.paginator_item}>
-
+              )
+            })}
+          </div>}
+        </div>
+        <div className={styles.characters_paginator}>
+          <Paginator totalPages={totalPages} getNewPage={getNewPage} />
         </div>
       </div>
     </section>

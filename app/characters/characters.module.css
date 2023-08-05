@@ -1,9 +1,16 @@
 .characters_container {
   width: 100%;
-  gap: 1rem;
+  overflow: hidden;
+  display: flex;
+  padding: 5rem 0;
+}
+
+.characters_container_overflow {
+  width: 100%;
+  max-height: 1301px;
+  gap: 2rem;
   display: grid;
   grid-template-columns: auto 50px;
-  padding: 5rem 0;
 }
 
 .characters_details {
@@ -11,7 +18,33 @@
   gap: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+}
+
+.characters_paginator {
+  gap: 10px;
+  overflow: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.paginator_item {
+  cursor: pointer;
+  position: relative;
+}
+
+.portal_txt_container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image_portal_txt {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black;
 }
 
 .rick_characters {
