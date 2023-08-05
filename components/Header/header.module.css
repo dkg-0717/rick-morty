@@ -1,0 +1,25 @@
+.header {
+  padding: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.home_characters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.image_container {
+  display: flex;
+  justify-content: center;
+}
+
+.image_title {
+  width: 50%;
+}
+
+.custom_link {
+  border-radius: 50px;
+  padding: 10px 25px;
+}

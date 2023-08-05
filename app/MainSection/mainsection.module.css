@@ -1,0 +1,30 @@
+.main_section {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.rick_title {
+  padding: 10rem 7rem;
+}
+
+.rick_txt {
+  font-size: 5rem;
+}
+
+.find_txt {
+  font-size: 1.5rem;
+  margin-top: 4rem;
+}
+
+.rick_image {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.rick_morty_img {
+  width: 500px;
+  height: 500px;
+}
