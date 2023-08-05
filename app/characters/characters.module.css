@@ -55,7 +55,11 @@
 .search_container {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+
+  .currentpage {
+    font-size: 2rem;
+  }
 }
 
 .search_input {
@@ -96,12 +100,18 @@
 
 .character_info {
   inset: 0;
+  gap: 0.75rem;
   font-size: 1.5rem;
-  padding: 1rem 0;
+  padding: 1rem;
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   flex-direction: column;
   background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 1));
+}
+
+.character_name,
+.character_specie {
+  text-align: center;
 }

@@ -16,6 +16,15 @@ const Characters = () => {
   const [characters, setCharacters] = useState([])
   const [charactersCopy, setCharactersCopy] = useState([])
 
+  const species = {
+    Human: {
+      color: '#ffdbc4'
+    },
+    Alien: {
+      color: '#7ffa67'
+    }
+  }
+
   const getCharacters = async (page?: number) => {
     try {
       page = page ?? currentPage
@@ -51,6 +60,11 @@ const Characters = () => {
     setCurrentPage(page)
   }
 
+  const getSpecieClass = (specie: string) => {
+    console.log(specie)
+    return species[specie]
+  }
+
   useEffect(() => {
     if (currentPage !== 1) {
       getCharacters(currentPage)
@@ -66,6 +80,7 @@ const Characters = () => {
         <div className={styles.characters_details}>
           <h1 className={styles.rick_characters}>Characters</h1>
           <div className={styles.search_container}>
+            <p className={styles.currentpage}>Current page: {currentPage}</p>
             <input onChange={(event) => handlerCharacter(event)} className={styles.search_input} type="text" placeholder="Search by name or species" />
           </div>
           {characters.length > 0 && <div className={styles.characters_list}>
@@ -73,8 +88,8 @@ const Characters = () => {
               return (
                 <div className={styles.character_item} key={idx} style={{ backgroundImage: `url(${character?.image})` }}>
                   <div className={styles.character_info}>
-                    <p>{character.name}</p>
-                    <p>{character.species}</p>
+                    <p className={styles.character_name}>{character.name}</p>
+                    <p className={styles.character_specie} style={getSpecieClass(character.species)}>{character.species}</p>
                   </div>
                 </div>
               )
