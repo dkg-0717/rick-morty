@@ -11,15 +11,34 @@ interface RMC {
 const Characters = () => {
 
   const [characters, setCharacters] = useState([])
+  const [charactersCopy, setCharactersCopy] = useState([])
 
   const getCharacters = async () => {
     try {
       const response = await fetch('https://rickandmortyapi.com/api/character/?page=1')
       const { results } = await response.json()
-      console.log(results)
+      setCharactersCopy(results)
       setCharacters(results)
     } catch {
 
+    }
+  }
+
+  const searchCharacter = (key: string) => {
+    key = key.toLowerCase()
+    const findCharacters = characters.filter((character: RMC) => character.name.toLowerCase().includes(key) || character.species.toLowerCase().includes(key))
+    if (findCharacters.length > 0) {
+      setCharacters(findCharacters)
+    }
+  }
+
+  const handlerCharacter = (event: any) => {
+    const { target } = event
+    if (target.value !== '') {
+      searchCharacter(target.value)
+    }
+    if (target.value == '') {
+      setCharacters(charactersCopy)
     }
   }
 
@@ -30,6 +49,9 @@ const Characters = () => {
   return (
     <section className={styles.characters_container}>
       <h1 className={styles.rick_characters}>Characters</h1>
+      <div className={styles.search_container}>
+        <input onChange={(event) => handlerCharacter(event)} className={styles.search_input} type="text" placeholder="Search by name or species" />
+      </div>
       {characters.length > 0 && <div className={styles.characters_list}>
         {characters.map((character: RMC, idx) => {
           return (

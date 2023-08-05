@@ -4,12 +4,27 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding-top: 5rem;
+  padding: 5rem 0;
 }
 
 .rick_characters {
   font-size: 4rem;
   text-align: center;
+}
+
+.search_container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.search_input {
+  min-width: 225px;
+  background: #fff;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  color: #191D26;
+  letter-spacing: 0.05rem;
 }
 
 .characters_list {
