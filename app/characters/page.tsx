@@ -12,6 +12,8 @@ interface RMC {
 
 const Characters = () => {
 
+  const [character, setCharacter] = useState({})
+  const [showModal, setShowModal] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
   const [characters, setCharacters] = useState([])
@@ -65,9 +67,9 @@ const Characters = () => {
     return species[specie]
   }
 
-  const showModal = (character) => {
-    console.log('showModal')
-    console.log(character)
+  const handlerShow = (character: RMC) => {
+    setShowModal((showModal) => !showModal)
+    setCharacter(character)
   }
 
   useEffect(() => {
@@ -92,7 +94,7 @@ const Characters = () => {
             {(characters.length > 0) && <div className={styles.characters_list}>
               {characters.map((character: RMC, idx) => {
                 return (
-                  <div className={styles.character_item} key={idx} style={{ backgroundImage: `url(${character?.image})` }} onClick={() => showModal(character)}>
+                  <div className={styles.character_item} key={idx} style={{ backgroundImage: `url(${character?.image})` }} onClick={() => handlerShow(character)}>
                     <div className={styles.character_info}>
                       <p className={styles.character_name}>{character.name}</p>
                       <p className={styles.character_specie} style={getSpecieClass(character.species)}>{character.species}</p>
@@ -107,7 +109,7 @@ const Characters = () => {
           </div>
         </div>
       </section>
-      <CharacterModal />
+      {showModal && <CharacterModal character={character} closeModal={setShowModal} />}
     </>
   )
 }

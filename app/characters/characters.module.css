@@ -97,6 +97,7 @@
 
 .character_item {
   height: 250px;
+  cursor: pointer;
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;

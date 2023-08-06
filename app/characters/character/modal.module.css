@@ -1,0 +1,51 @@
+.character_detail_container {
+  inset: 0;
+  position: fixed;
+  backdrop-filter: blur(7px);
+}
+
+.character_modal {
+  margin: 10rem auto;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #000;
+}
+
+.character_image {
+  width: 300px;
+  height: 300px;
+}
+
+.character_info {
+  gap: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.human_txt {
+  color: #191D26;
+}
+
+.alien_txt {
+  color: #7ffa67;
+  text-shadow: #000 1px 0 10px;
+}
+
+.robot_txt {
+  color: #191D26;
+}
+
+.close_modal {
+  border: 0;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  letter-spacing: 0.35rem;
+  background-color: #254659;
+}
