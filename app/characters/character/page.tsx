@@ -1,6 +1,11 @@
 import styles from './modal.module.css'
 
-const Character = ({ character, closeModal }) => {
+interface Props {
+  character: object;
+  closeModal: object;
+}
+
+const Character: React.FC<Props> = ({ character, closeModal }) => {
 
   const species = {
     Human: {
@@ -38,6 +43,15 @@ const Character = ({ character, closeModal }) => {
       </div>
     </div>
   )
+}
+
+Character.prototype = {
+  character: {
+
+  },
+  closeModal: {
+
+  }
 }
 
 export default Character
