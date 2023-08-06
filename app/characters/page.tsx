@@ -13,7 +13,6 @@ interface RMC {
 
 const Characters = () => {
 
-  const [isSearching, setSearching] = useState(false)
   const [character, setCharacter] = useState({})
   const [showModal, setShowModal] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
@@ -28,18 +27,6 @@ const Characters = () => {
     Alien: {
       color: '#7ffa67'
     }
-  }
-
-  const animation = () => {
-    const tl = gsap.timeline()
-    const items = document.querySelectorAll('.character-item')
-    tl.from(items, {
-      y: 10,
-      autoAlpha: 0,
-      stagger: {
-        amount: 1
-      }
-    })
   }
 
   const getCharacters = async (page?: number) => {
@@ -93,12 +80,6 @@ const Characters = () => {
       getCharacters()
     }
   }, [currentPage])
-
-  useEffect(() => {
-    setTimeout(() => {
-      animation();
-    }, 500)
-  }, [])
 
 
   return (
