@@ -1,7 +1,6 @@
 import styles from './modal.module.css'
 
 const Character = ({ character, closeModal }) => {
-  console.log(character)
 
   const species = {
     Human: {
@@ -23,8 +22,6 @@ const Character = ({ character, closeModal }) => {
 
   const bgColor = species[character.species].rgba || 'rgba(255,255,255,1)';
   const txtColor = species[character.species].style
-
-  console.log(txtColor)
 
   return (
     <div className={styles.character_detail_container}>
