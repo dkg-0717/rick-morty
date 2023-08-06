@@ -7,10 +7,9 @@
 
 .characters_container_overflow {
   width: 100%;
-  max-height: 1301px;
   gap: 2rem;
   display: grid;
-  grid-template-columns: auto 50px;
+  grid-template-columns: auto 70px;
 }
 
 .characters_details {
@@ -21,16 +20,34 @@
 }
 
 .characters_paginator {
-  gap: 10px;
+  gap: 17px;
   overflow: auto;
   height: 100%;
+  padding: 10px;
   display: flex;
+  max-height: 1600px;
   flex-direction: column;
 }
 
 .paginator_item {
   cursor: pointer;
   position: relative;
+  box-shadow: rgba(255, 255, 255, 0.04) 0px 0px 0px 0px;
+}
+
+.paginator_item_active {
+  box-shadow: #7ffa67 0px 0px 0px 5px;
+  animation: paginator-active 1.5s ease alternate-reverse infinite;
+}
+
+@keyframes paginator-active {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
+  }
 }
 
 .portal_txt_container {
@@ -114,4 +131,24 @@
 .character_name,
 .character_specie {
   text-align: center;
+}
+
+@media (max-width:650px) {
+  .search_container {
+    gap: 17px;
+    flex-wrap: wrap;
+  }
+
+  .search_input {
+    width: 100%;
+  }
+
+  .characters_container_overflow {
+    grid-template-columns: 1fr;
+  }
+
+  .characters_paginator {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  }
 }

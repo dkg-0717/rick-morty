@@ -29,3 +29,25 @@
   width: 500px;
   height: 500px;
 }
+
+@media (max-width: 990px) {
+  .main_section {
+    grid-template-columns: 1fr;
+  }
+
+  .rick_title {
+    padding: 7rem 0;
+  }
+
+  .rick_image {
+    padding: 0;
+    justify-content: center;
+  }
+}
+
+@media (max-width:650px) {
+  .rick_morty_img {
+    max-width: 100%;
+    height: auto;
+  }
+}

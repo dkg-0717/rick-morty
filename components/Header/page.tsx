@@ -14,7 +14,9 @@ const Header = () => {
       <div className={styles.image_container}>
         <img className={styles.image_title} src={urlImage} alt="" />
       </div>
-      <div className=''></div>
+      <div className={styles.about_container}>
+        <ActiveLink text="About" path="/about" />
+      </div>
     </header>
   )
 }

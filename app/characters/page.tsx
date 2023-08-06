@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import styles from './characters.module.css'
 import Paginator from './paginator/page'
+import CharacterModal from './character/page'
 
 interface RMC {
   name: string;
@@ -61,8 +62,12 @@ const Characters = () => {
   }
 
   const getSpecieClass = (specie: string) => {
-    console.log(specie)
     return species[specie]
+  }
+
+  const showModal = (character) => {
+    console.log('showModal')
+    console.log(character)
   }
 
   useEffect(() => {
@@ -75,32 +80,35 @@ const Characters = () => {
 
 
   return (
-    <section className={styles.characters_container}>
-      <div className={styles.characters_container_overflow}>
-        <div className={styles.characters_details}>
-          <h1 className={styles.rick_characters}>Characters</h1>
-          <div className={styles.search_container}>
-            <p className={styles.currentpage}>Current page: {currentPage}</p>
-            <input onChange={(event) => handlerCharacter(event)} className={styles.search_input} type="text" placeholder="Search by name or species" />
-          </div>
-          {characters.length > 0 && <div className={styles.characters_list}>
-            {characters.map((character: RMC, idx) => {
-              return (
-                <div className={styles.character_item} key={idx} style={{ backgroundImage: `url(${character?.image})` }}>
-                  <div className={styles.character_info}>
-                    <p className={styles.character_name}>{character.name}</p>
-                    <p className={styles.character_specie} style={getSpecieClass(character.species)}>{character.species}</p>
+    <>
+      <section className={styles.characters_container}>
+        <div className={styles.characters_container_overflow}>
+          <div className={styles.characters_details}>
+            <h1 className={styles.rick_characters}>Characters</h1>
+            <div className={styles.search_container}>
+              <p className={styles.currentpage}>Current page: {currentPage}</p>
+              <input onChange={(event) => handlerCharacter(event)} className={styles.search_input} type="text" placeholder="Search by name or species" />
+            </div>
+            {(characters.length > 0) && <div className={styles.characters_list}>
+              {characters.map((character: RMC, idx) => {
+                return (
+                  <div className={styles.character_item} key={idx} style={{ backgroundImage: `url(${character?.image})` }} onClick={() => showModal(character)}>
+                    <div className={styles.character_info}>
+                      <p className={styles.character_name}>{character.name}</p>
+                      <p className={styles.character_specie} style={getSpecieClass(character.species)}>{character.species}</p>
+                    </div>
                   </div>
-                </div>
-              )
-            })}
-          </div>}
+                )
+              })}
+            </div>}
+          </div>
+          <div className={styles.characters_paginator}>
+            <Paginator currentPage={currentPage} totalPages={totalPages} getNewPage={getNewPage} />
+          </div>
         </div>
-        <div className={styles.characters_paginator}>
-          <Paginator totalPages={totalPages} getNewPage={getNewPage} />
-        </div>
-      </div>
-    </section>
+      </section>
+      <CharacterModal />
+    </>
   )
 }
 
