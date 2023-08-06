@@ -6,7 +6,7 @@
 }
 
 .rick_title {
-  padding: 10rem 7rem;
+  padding: 10rem 2rem;
 }
 
 .rick_txt {
@@ -20,7 +20,7 @@
 
 .rick_image {
   display: flex;
-  padding: 0 7rem;
+  padding: 0 2rem;
   align-items: center;
   justify-content: flex-end;
 }

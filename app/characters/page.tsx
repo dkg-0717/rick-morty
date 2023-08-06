@@ -1,4 +1,5 @@
 'use client';
+import gsap from 'gsap'
 import { useEffect, useState } from "react"
 import styles from './characters.module.css'
 import Paginator from './paginator/page'
@@ -26,6 +27,18 @@ const Characters = () => {
     Alien: {
       color: '#7ffa67'
     }
+  }
+
+  const animation = () => {
+    const tl = gsap.timeline()
+    const items = document.querySelectorAll('.character-item')
+    tl.from(items, {
+      y: 10,
+      autoAlpha: 0,
+      stagger: {
+        amount: 1
+      }
+    })
   }
 
   const getCharacters = async (page?: number) => {
@@ -80,6 +93,12 @@ const Characters = () => {
     }
   }, [currentPage])
 
+  useEffect(() => {
+    setTimeout(() => {
+      animation()
+    })
+  }, [characters])
+
 
   return (
     <>
@@ -94,7 +113,7 @@ const Characters = () => {
             {(characters.length > 0) && <div className={styles.characters_list}>
               {characters.map((character: RMC, idx) => {
                 return (
-                  <div className={styles.character_item} key={idx} style={{ backgroundImage: `url(${character?.image})` }} onClick={() => handlerShow(character)}>
+                  <div className={`${styles.character_item} character-item`} key={idx} style={{ backgroundImage: `url(${character?.image})` }} onClick={() => handlerShow(character)}>
                     <div className={styles.character_info}>
                       <p className={styles.character_name}>{character.name}</p>
                       <p className={styles.character_specie} style={getSpecieClass(character.species)}>{character.species}</p>

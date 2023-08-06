@@ -1,3 +1,4 @@
+'use client';
 import ActiveLink from '../ActiveLink/page'
 import styles from './header.module.css'
 

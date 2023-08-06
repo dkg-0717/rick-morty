@@ -1,0 +1,14 @@
+.about_container {
+  display: flex;
+  align-items: center;
+  margin-inline: auto;
+  flex-direction: column;
+  max-inline-size: 600px;
+  justify-content: center;
+  margin-block-start: 2rem;
+}
+
+.about_image {
+  max-width: 400px;
+  height: auto;
+}

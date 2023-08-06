@@ -96,6 +96,7 @@
 }
 
 .character_item {
+  visibility: hidden;
   height: 250px;
   cursor: pointer;
   position: relative;

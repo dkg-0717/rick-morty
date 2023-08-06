@@ -1,7 +1,7 @@
 'use client';
 import Link from "next/link"
 import styles from '../Header/header.module.css'
-import { useRouter, usePathname } from "next/navigation"
+import { usePathname } from "next/navigation"
 
 const style = {
   color: '#191D26',
@@ -11,7 +11,6 @@ const style = {
 
 const ActiveLink = ({ path, text }) => {
 
-  const router = useRouter()
   const pathName = usePathname()
 
   return (
