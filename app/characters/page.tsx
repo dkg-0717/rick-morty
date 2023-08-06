@@ -13,6 +13,7 @@ interface RMC {
 
 const Characters = () => {
 
+  const [isSearching, setSearching] = useState(false)
   const [character, setCharacter] = useState({})
   const [showModal, setShowModal] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
@@ -95,9 +96,9 @@ const Characters = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      animation()
-    })
-  }, [characters])
+      animation();
+    }, 500)
+  }, [])
 
 
   return (
