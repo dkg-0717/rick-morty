@@ -11,4 +11,14 @@
 .about_image {
   max-width: 400px;
   height: auto;
+  visibility: hidden;
+}
+
+.title {
+  visibility: hidden;
+}
+
+.txt_info {
+  visibility: hidden;
+  margin-block-start: 3rem;
 }

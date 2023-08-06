@@ -39,6 +39,12 @@ h1 {
   text-align: center;
 }
 
+@media (max-width:650px) {
+  .main-section {
+    padding: 0 1rem;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
