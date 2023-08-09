@@ -16,12 +16,13 @@ const MainSection = () => {
 
     tl.from(image, {
       scale: 0,
+      autoAlpha: 0,
       duration: 1,
       ease: 'Bounce.easeOut'
     })
       .from(links, {
         scale: 0,
-        opacity: 0,
+        autoAlpha: 0,
         duration: 0.75,
         stagger: {
           amount: 0.75
@@ -29,14 +30,14 @@ const MainSection = () => {
       })
       .from(texts, {
         y: 100,
-        opacity: 0,
+        autoAlpha: 0,
         duration: 0.5,
         stagger: {
           amount: 0.5
         }
       })
       .from(mainImage, {
-        opacity: 0,
+        autoAlpha: 0,
         scale: 1.5,
         duration: 1
       })
