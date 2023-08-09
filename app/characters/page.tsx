@@ -4,10 +4,6 @@ import styles from './characters.module.css'
 import Paginator from './paginator/page'
 import CharacterModal from './characterModal/page'
 
-interface Origin {
-  name: string;
-}
-
 interface Character {
   name: string;
   gender: string;
@@ -17,18 +13,13 @@ interface Character {
   image?: string;
 }
 
-const Characters = () => {
+interface Origin {
+  name: string;
+}
 
-  const [character, setCharacter] = useState<Character>({
-    name: '',
-    gender: '',
-    species: '',
-    status: '',
-    origin: {
-      name: ''
-    },
-    image: ''
-  })
+export default function Characters() {
+
+  const [character, setCharacter] = useState({})
   const [showModal, setShowModal] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
@@ -129,5 +120,3 @@ const Characters = () => {
     </>
   )
 }
-
-export default Characters

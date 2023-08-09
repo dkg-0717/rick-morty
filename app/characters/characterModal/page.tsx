@@ -1,6 +1,9 @@
+'use client';
 import styles from './modal.module.css'
-interface Origin {
-  name: string;
+
+interface Props {
+  character: Character;
+  closeModal(value: boolean): void;
 }
 interface Character {
   name: string;
@@ -10,12 +13,12 @@ interface Character {
   origin: Origin;
   image?: string;
 }
-interface Props {
-  character: Character;
-  closeModal(value: boolean): void;
+
+interface Origin {
+  name: string;
 }
 
-const CharacterModal: React.FC<Props> = ({ character, closeModal }) => {
+export default function CharacterModal({ character, closeModal }: any) {
 
   const species: any = {
     Human: {
@@ -53,6 +56,5 @@ const CharacterModal: React.FC<Props> = ({ character, closeModal }) => {
       </div>
     </div>
   )
-}
 
-export default CharacterModal
+}
