@@ -1,7 +1,7 @@
 'use client';
 import Image from "next/image";
-import styles from '../../app/characters/characters.module.css'
-import Portal from '../../app/src/images/portal.png'
+import styles from '../../characters/characters.module.css'
+import Portal from '../../src/images/portal.png'
 
 export default function Paginator(props) {
 

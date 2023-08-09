@@ -1,5 +1,5 @@
 'use client';
-import ActiveLink from '../ActiveLink/page'
+import ActiveLink from '../ActiveLink'
 import styles from './header.module.css'
 
 const Header = () => {

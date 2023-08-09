@@ -1,8 +1,8 @@
 'use client';
 import { useEffect, useState } from "react"
 import styles from './characters.module.css'
-import Paginator from '../../components/paginator/page'
-import CharacterModal from '../../components/characterModal/page'
+import Paginator from '../components/paginator'
+import CharacterModal from '../components/characterModal'
 
 interface Character {
   name: string;
