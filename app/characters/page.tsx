@@ -1,7 +1,11 @@
 'use client';
+import { useRouter } from 'next/navigation'
+
 import { useEffect, useState } from "react"
 import styles from './characters.module.css'
 import Paginator from '../components/paginator'
+import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
+
 import CharacterModal from '../components/characterModal'
 
 interface Character {
@@ -18,6 +22,11 @@ interface Origin {
 }
 
 export default function Characters() {
+
+  const router = useRouter()
+
+  const { canRenderModal } = useAppSelector((state) => state.modalReducer);
+
 
   const [character, setCharacter] = useState({})
   const [showModal, setShowModal] = useState(false)
@@ -75,8 +84,12 @@ export default function Characters() {
   }
 
   const handlerShow = (character: Character) => {
-    setShowModal((showModal) => !showModal)
-    setCharacter(character)
+    if (!canRenderModal) {
+      router.push('/characters/2')
+    } else {
+      setShowModal((showModal) => !showModal)
+      setCharacter(character)
+    }
   }
 
   useEffect(() => {
