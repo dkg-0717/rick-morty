@@ -1,6 +1,5 @@
 'use client';
 import styles from './modal.module.css'
-
 interface Props {
   character: Character;
   closeModal(value: boolean): void;
@@ -18,7 +17,9 @@ interface Origin {
   name: string;
 }
 
-export default function CharacterModal({ character, closeModal }: any) {
+export default function CharacterModal(props) {
+
+  const { character, closeModal } = props
 
   const species: any = {
     Human: {

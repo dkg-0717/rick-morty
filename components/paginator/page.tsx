@@ -1,10 +1,13 @@
+'use client';
 import Image from "next/image";
-import styles from '../characters.module.css'
-import Portal from '../../src/images/portal.png'
+import styles from '../characterModal/modal.module.css'
+import Portal from '../../app/src/images/portal.png'
 
-import { PaginatorProps } from "@/utils/PaginatorTypes";
+import { PaginatorType } from "@/utils/PaginatorTypes";
 
-export default function Paginator({ totalPages, getNewPage, currentPage }: any) {
+export default function Paginator(props) {
+
+  const { totalPages, getNewPage, currentPage } = props
 
   return (
     <>
