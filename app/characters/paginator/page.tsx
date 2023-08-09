@@ -2,8 +2,13 @@ import Image from "next/image";
 import styles from '../characters.module.css'
 import Portal from '../../src/images/portal.png'
 
+interface Props {
+  totalPages: number;
+  getNewPage(n: number): void;
+  currentPage: number;
+}
 
-const Paginator = ({ totalPages, getNewPage, currentPage }) => {
+const Paginator: React.FC<Props> = ({ totalPages, getNewPage, currentPage }) => {
 
   return (
     <>

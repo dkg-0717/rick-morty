@@ -1,26 +1,41 @@
 'use client';
-import gsap from 'gsap'
 import { useEffect, useState } from "react"
 import styles from './characters.module.css'
 import Paginator from './paginator/page'
 import CharacterModal from './character/page'
 
-interface RMC {
+interface Origin {
   name: string;
-  image: string;
+}
+
+interface Character {
+  name: string;
+  gender: string;
   species: string;
+  status: string;
+  origin: Origin;
+  image?: string;
 }
 
 const Characters = () => {
 
-  const [character, setCharacter] = useState({})
+  const [character, setCharacter] = useState<Character>({
+    name: '',
+    gender: '',
+    species: '',
+    status: '',
+    origin: {
+      name: ''
+    },
+    image: ''
+  })
   const [showModal, setShowModal] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
   const [characters, setCharacters] = useState([])
   const [charactersCopy, setCharactersCopy] = useState([])
 
-  const species = {
+  const species: any = {
     Human: {
       color: '#ffdbc4'
     },
@@ -44,7 +59,7 @@ const Characters = () => {
 
   const searchCharacter = (key: string) => {
     key = key.toLowerCase()
-    const findCharacters = characters.filter((character: RMC) => character.name.toLowerCase().includes(key) || character.species.toLowerCase().includes(key))
+    const findCharacters = characters.filter((character: Character) => character.name.toLowerCase().includes(key) || character.species.toLowerCase().includes(key))
     if (findCharacters.length > 0) {
       setCharacters(findCharacters)
     }
@@ -68,7 +83,7 @@ const Characters = () => {
     return species[specie]
   }
 
-  const handlerShow = (character: RMC) => {
+  const handlerShow = (character: Character) => {
     setShowModal((showModal) => !showModal)
     setCharacter(character)
   }
@@ -93,7 +108,7 @@ const Characters = () => {
               <input onChange={(event) => handlerCharacter(event)} className={styles.search_input} type="text" placeholder="Search by name or species" />
             </div>
             {(characters.length > 0) && <div className={styles.characters_list}>
-              {characters.map((character: RMC, idx) => {
+              {characters.map((character: Character, idx) => {
                 return (
                   <div className={`${styles.character_item} character-item`} key={idx} style={{ backgroundImage: `url(${character?.image})` }} onClick={() => handlerShow(character)}>
                     <div className={styles.character_info}>

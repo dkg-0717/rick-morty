@@ -1,13 +1,23 @@
 import styles from './modal.module.css'
-
+interface Origin {
+  name: string;
+}
+interface Character {
+  name: string;
+  gender: string;
+  species: string;
+  status: string;
+  origin: Origin;
+  image?: string;
+}
 interface Props {
-  character: object;
-  closeModal: object;
+  character: Character;
+  closeModal(value: boolean): void;
 }
 
 const Character: React.FC<Props> = ({ character, closeModal }) => {
 
-  const species = {
+  const species: any = {
     Human: {
       color: '#191D26',
       rgba: 'rgba(255, 219, 196, 0.7)',
@@ -43,15 +53,6 @@ const Character: React.FC<Props> = ({ character, closeModal }) => {
       </div>
     </div>
   )
-}
-
-Character.prototype = {
-  character: {
-
-  },
-  closeModal: {
-
-  }
 }
 
 export default Character
