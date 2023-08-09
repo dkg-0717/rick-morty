@@ -15,7 +15,7 @@ interface Props {
   closeModal(value: boolean): void;
 }
 
-const Character: React.FC<Props> = ({ character, closeModal }) => {
+const CharacterModal: React.FC<Props> = ({ character, closeModal }) => {
 
   const species: any = {
     Human: {
@@ -55,4 +55,4 @@ const Character: React.FC<Props> = ({ character, closeModal }) => {
   )
 }
 
-export default Character
+export default CharacterModal
