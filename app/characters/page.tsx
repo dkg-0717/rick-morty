@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import styles from './characters.module.css'
 import Paginator from './paginator/page'
-import CharacterModal from './character/page'
+import CharacterModal from './characterModal/page'
 
 interface Origin {
   name: string;
