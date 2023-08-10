@@ -37,3 +37,20 @@
   font-size: 4rem;
   text-shadow: #FFF 1px 0 10px;
 }
+
+@media (max-width:850px) {
+  .character_container {
+    padding-top: 0;
+  }
+
+  .character_name {
+    text-align: center;
+    margin-block-end: 2rem;
+  }
+
+  .character_info_container {
+    flex-wrap: wrap;
+    margin-block-start: 2rem;
+    justify-content: center;
+  }
+}

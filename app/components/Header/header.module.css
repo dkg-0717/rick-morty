@@ -108,7 +108,7 @@ input:checked+.slider:before {
 
 @media (max-width:650px) {
   .header {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
   .image_container {

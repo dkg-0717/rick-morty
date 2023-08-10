@@ -12,7 +12,8 @@ const MainSection = () => {
     const texts = document.querySelectorAll('.main-texts > *')
     const image = document.querySelector('header img')
     const mainImage = document.querySelector('.main-image')
-    const links = document.querySelectorAll('header a')
+    const p1 = document.querySelectorAll('.p1')
+    const p2 = document.querySelectorAll('.p2')
 
     tl.from(image, {
       scale: 0,
@@ -20,14 +21,22 @@ const MainSection = () => {
       duration: 1,
       ease: 'Bounce.easeOut'
     })
-      .from(links, {
-        scale: 0,
+      .from(p1, {
+        x: -50,
         autoAlpha: 0,
         duration: 0.75,
         stagger: {
           amount: 0.75
         }
       })
+      .from(p2, {
+        x: 50,
+        autoAlpha: 0,
+        duration: 0.75,
+        stagger: {
+          amount: 0.75
+        }
+      }, '-=1.50')
       .from(texts, {
         y: 100,
         autoAlpha: 0,
@@ -41,6 +50,7 @@ const MainSection = () => {
         scale: 1.5,
         duration: 1
       })
+
 
   }, [])
 

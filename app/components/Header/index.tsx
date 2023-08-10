@@ -13,16 +13,16 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.home_characters}>
+      <div className={`${styles.home_characters} p1`}>
         <ActiveLink text="Home" path="/" />
       </div>
-      <div className={styles.characters}>
+      <div className={`${styles.characters} p1`}>
         <ActiveLink text="Characters" path="/characters" />
       </div>
       <div className={styles.image_container}>
         <img className={styles.image_title} src={urlImage} alt="" />
       </div>
-      <div className={styles.switch_input}>
+      <div className={`${styles.switch_input} p2`}>
         <p>Modal</p>
         <label className={styles.switch}>
           <input type="checkbox" checked={canRenderModal} readOnly
@@ -30,7 +30,7 @@ const Header = () => {
           <span className={`${styles.slider} ${styles.round}`}></span>
         </label>
       </div>
-      <div className={styles.about_container}>
+      <div className={`${styles.about_container} p2`}>
         <ActiveLink text="About" path="/about" />
       </div>
     </header>
