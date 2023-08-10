@@ -1,22 +1,16 @@
 'use client';
-import { useRouter } from 'next/navigation'
 
 import { useEffect, useState } from "react"
 import styles from './characters.module.css'
 import Paginator from '../components/paginator'
+import CharacterPage from "../components/character";
 import { Character } from '@/utils/CharacterTypes';
 import { getAllCharacters } from '@/services/rickmorty'
-import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 
 import CharacterModal from '../components/characterModal'
 
 
 export default function Characters() {
-
-  const router = useRouter()
-
-  const { canRenderModal } = useAppSelector((state) => state.modalReducer);
-
 
   const [character, setCharacter] = useState({})
   const [showModal, setShowModal] = useState(false)
@@ -24,15 +18,6 @@ export default function Characters() {
   const [totalPages, setTotalPages] = useState(0)
   const [characters, setCharacters] = useState([])
   const [charactersCopy, setCharactersCopy] = useState([])
-
-  const species: any = {
-    Human: {
-      color: '#ffdbc4'
-    },
-    Alien: {
-      color: '#7ffa67'
-    }
-  }
 
   const getCharacters = async (page?: number) => {
     try {
@@ -68,19 +53,6 @@ export default function Characters() {
     setCurrentPage(page)
   }
 
-  const getSpecieClass = (specie: string) => {
-    return species[specie]
-  }
-
-  const handlerShow = (character: Character) => {
-    if (!canRenderModal) {
-      router.push(`/characters/${character.id}`)
-    } else {
-      setShowModal((showModal) => !showModal)
-      setCharacter(character)
-    }
-  }
-
   useEffect(() => {
     if (currentPage !== 1) {
       getCharacters(currentPage)
@@ -100,18 +72,7 @@ export default function Characters() {
               <p className={styles.currentpage}>Current page: {currentPage}</p>
               <input onChange={(event) => handlerCharacter(event)} className={styles.search_input} type="text" placeholder="Search by name or species" />
             </div>
-            {(characters.length > 0) && <div className={styles.characters_list}>
-              {characters.map((character: Character, idx) => {
-                return (
-                  <div className={`${styles.character_item} character-item`} key={idx} style={{ backgroundImage: `url(${character?.image})` }} onClick={() => handlerShow(character)}>
-                    <div className={styles.character_info}>
-                      <p className={styles.character_name}>{character.name}</p>
-                      <p className={styles.character_specie} style={getSpecieClass(character.species)}>{character.species}</p>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>}
+            {(characters.length > 0) && <CharacterPage characters={characters} setShowModal={setShowModal} setCharacter={setCharacter} />}
           </div>
           <div className={styles.characters_paginator}>
             <Paginator currentPage={currentPage} totalPages={totalPages} getNewPage={getNewPage} />
