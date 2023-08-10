@@ -8,6 +8,7 @@ import { Character } from '@/utils/CharacterTypes';
 import { getAllCharacters } from '@/services/rickmorty'
 
 import CharacterModal from '../components/characterModal'
+import CustomSelector from "../components/customSelector";
 
 
 export default function Characters() {
@@ -71,6 +72,7 @@ export default function Characters() {
             <div className={styles.search_container}>
               <p className={styles.currentpage}>Current page: {currentPage}</p>
               <input onChange={(event) => handlerCharacter(event)} className={styles.search_input} type="text" placeholder="Search by name or species" />
+              <CustomSelector totalPages={totalPages} setCurrentPage={setCurrentPage} />
             </div>
             {(characters.length > 0) && <CharacterPage characters={characters} setShowModal={setShowModal} setCharacter={setCharacter} />}
           </div>

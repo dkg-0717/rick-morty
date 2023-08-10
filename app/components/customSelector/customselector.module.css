@@ -1,0 +1,9 @@
+.custom_selector {
+  min-width: 225px;
+  width: 100%;
+  background: #fff;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  color: #191D26;
+  letter-spacing: 0.05rem;
+}
