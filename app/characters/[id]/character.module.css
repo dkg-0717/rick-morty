@@ -1,0 +1,39 @@
+.character_container {
+  display: flex;
+  align-items: center;
+  margin-inline: auto;
+  flex-direction: column;
+  max-inline-size: 800px;
+  justify-content: center;
+  -webkit-margin-before: 2rem;
+  padding-top: 5rem;
+}
+
+.character_title {
+  font-size: 4rem;
+}
+
+.character_info_container {
+  gap: 5rem;
+  display: flex;
+  margin-block-start: 4rem;
+}
+
+.character_info span {
+  text-shadow: #191D26 1px 0 10px;
+}
+
+.character_info p {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.character_image {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.character_name {
+  font-size: 4rem;
+  text-shadow: #FFF 1px 0 10px;
+}

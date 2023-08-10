@@ -4,22 +4,12 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from "react"
 import styles from './characters.module.css'
 import Paginator from '../components/paginator'
+import { Character } from '@/utils/CharacterTypes';
+import { getAllCharacters } from '@/services/rickmorty'
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 
 import CharacterModal from '../components/characterModal'
 
-interface Character {
-  name: string;
-  gender: string;
-  species: string;
-  status: string;
-  origin: Origin;
-  image?: string;
-}
-
-interface Origin {
-  name: string;
-}
 
 export default function Characters() {
 
@@ -47,8 +37,7 @@ export default function Characters() {
   const getCharacters = async (page?: number) => {
     try {
       page = page ?? currentPage
-      const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${page}`)
-      const { results, info } = await response.json()
+      const { results, info } = await getAllCharacters(page)
       setTotalPages(info.pages)
       setCharactersCopy(results)
       setCharacters(results)
@@ -85,7 +74,7 @@ export default function Characters() {
 
   const handlerShow = (character: Character) => {
     if (!canRenderModal) {
-      router.push('/characters/2')
+      router.push(`/characters/${character.id}`)
     } else {
       setShowModal((showModal) => !showModal)
       setCharacter(character)
